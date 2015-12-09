@@ -4,6 +4,7 @@
 #include "Random.h"
 #include "EntranceQueue.h"
 #include "TableQueue.h"
+#include "EatingQueue.h"
 
 Random _random;
 
@@ -14,6 +15,7 @@ private:
     
     EntranceQueue *entrance_queue;
     TableQueue *table_queue;
+    EatingQueue *eating_queue;
     
     
     int read_int(const std::string &prompt, int low, int high) {
@@ -45,6 +47,7 @@ public:
     Simulator() {
         entrance_queue = new EntranceQueue();
         table_queue = new TableQueue();
+        eating_queue = new EatingQueue();
     }
 
     void init() {

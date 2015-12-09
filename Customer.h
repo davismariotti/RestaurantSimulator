@@ -16,12 +16,10 @@ public:
         return time_in_queue;
     }
     
-};
-
-struct CompareByTime {
-    bool operator()(Customer const & c1, Customer const & c2) {
-        return c1.time_in_queue < c2.time_in_queue;
+    bool operator<(Customer const & c2) {
+        return time_in_queue < c2.time_in_queue;
     }
+    
 };
 
 
