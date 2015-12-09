@@ -4,12 +4,12 @@
 #include <queue>
 #include "Customer.h"
 #include "EntranceQueue.h"
-//#include "EatingQueue.h"
+#include "EatingQueue.h"
 
 class TableQueue {
 private:
     EntranceQueue *entrance_queue;
-    //EatingQueue *eating_queue;
+    EatingQueue *eating_queue;
     
     std::priority_queue<Customer *> the_queue;
     int total_wait;
@@ -23,9 +23,13 @@ public:
         this->max_size = max_size;
     }
     
-    void init(EntranceQueue *entrance_queue/*, EatingQueue *eating-queue*/) {
+    void init(EntranceQueue *entrance_queue, EatingQueue *eating_queue) {
         this->entrance_queue = entrance_queue;
-        //this->eating_queue = eating_queue;
+        this->eating_queue = eating_queue;
+    }
+    
+    void setMaxSize(int m) {
+        max_size = m;
     }
     
     void update(int clock) {

@@ -54,6 +54,9 @@ public:
         std::cout << "Welcome to the Restaurant Simulator" << std::endl;
         total_time = read_int("Please enter the simulation time (hours): ", 1, INT_MAX);
         total_time *= 60;
+        
+        int table_count = read_int("How many tables will the restaurant have: ", 1, INT_MAX);
+        table_queue->setMaxSize(table_count);
     }
     
     
