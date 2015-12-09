@@ -1,0 +1,50 @@
+#ifndef TableQueue_h
+#define TableQueue_h
+
+#include <queue>
+#include "Customer.h"
+#include "EntranceQueue.h"
+//#include "EatingQueue.h"
+
+class TableQueue {
+private:
+    EntranceQueue *entrance_queue;
+    //EatingQueue *eating_queue;
+    
+    std::priority_queue<Customer, CompareByTime> the_queue;
+    int total_wait;
+    int num_served;
+    int max_size;
+    
+public:
+    TableQueue() : total_wait(0), num_served(0) {}
+    
+    void setTimes(int max_size) {
+        this->max_size = max_size;
+    }
+    
+    void init(EntranceQueue *entrance_queue/*, EatingQueue *eating-queue*/) {
+        this->entrance_queue = entrance_queue;
+        //this->eating_queue = eating_queue;
+    }
+    
+    void update(int clock) {
+        if(!the_queue.empty()) {
+            
+        }
+        if (the_queue.size() < max_size) {
+            if (!entrance_queue->the_queue.empty()) {
+                Customer *customer = entrance_queue->the_queue.front();
+                entrance_queue->the_queue.pop();
+                entrance_queue->num_served++;
+                entrance_queue->total_wait += clock - customer->arrival_time;
+                /* Determine which Dish they will have here */
+                customer->setTimeInQueue(20);
+                the_queue.push(customer);
+                
+            }
+        }
+    }
+};
+
+#endif
