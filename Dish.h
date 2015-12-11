@@ -1,7 +1,7 @@
 #ifndef Dish_h
 #define Dish_h
 
-class Dish() {
+class Dish {
 private:
     int start;
 public:
