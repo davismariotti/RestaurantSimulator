@@ -2,7 +2,7 @@
 #define Dish_h
 
 class Dish {
-private:
+protected:
     int start;
 public:
     Dish (clock) {
