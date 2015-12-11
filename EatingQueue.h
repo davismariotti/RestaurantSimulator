@@ -2,10 +2,13 @@
 #define EatingQueue_h
 
 #include <queue>
+#include <map>
+#include "Dish.h"
 
 class EatingQueue {
 private:
     std::priority_queue<Customer *> the_queue;
+    std::map<Customer *, Dish *> dishes;
     int total_wait;
     int num_served;
     
