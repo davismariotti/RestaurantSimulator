@@ -1,5 +1,5 @@
-#ifndef Spaghetti_h
-#define Spaghetti_h
+#ifndef SPAGHETTI_h
+#define SPAGHETTI_h
 
 #include "Dish.h"
 #include "Simulator.h"
