@@ -5,21 +5,21 @@
 
 class SelectionData {
 private:
-    Dish appetizer;
-    Dish entree;
-    Dish dessert;
+    Dish *appetizer;
+    Dish *entree;
+    Dish *dessert;
 public:
-    SelectionData(Dish a, Dish e, Dish d) : appetizer(a), entree(e), dessert(d) {}
+    SelectionData(Dish *a, Dish *e, Dish *d) : appetizer(a), entree(e), dessert(d) {}
     
-    Dish getAppetizer() {
+    Dish* getAppetizer() {
         return appetizer;
     }
     
-    Dish getEntree() {
+    Dish* getEntree() {
         return entree;
     }
     
-    Dish getDessert() {
+    Dish* getDessert() {
         return dessert;
     }
 };

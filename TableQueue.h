@@ -5,6 +5,8 @@
 #include "Customer.h"
 #include "EntranceQueue.h"
 #include "EatingQueue.h"
+#include "ChickenSoup.h"
+#include "Spaghetti.h"
 
 class TableQueue {
 private:
@@ -33,12 +35,17 @@ public:
                 entrance_queue->the_queue.pop();
                 entrance_queue->num_served++;
                 entrance_queue->total_wait += clock - customer->arrival_time;
-                /* Determine which Dish they will have here */
-                customer->setTimeInQueue(20);
+                assignDishToCustomer(customer);
+                customer->setTimeInQueue(customer->time_in_queue);
                 the_queue.push(customer);
                 
             }
         }
+    }
+    
+    void assignDishToCustomer(Customer *customer) {
+        SelectionData(new ChickenSoup(), new Spaghetti(), new ChickenSoup());
+        customer->setTimeInQueue(20);
     }
 };
 
