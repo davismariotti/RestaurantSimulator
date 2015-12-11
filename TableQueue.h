@@ -14,14 +14,9 @@ private:
     std::priority_queue<Customer *> the_queue;
     int total_wait;
     int num_served;
-    int max_size;
     
 public:
     TableQueue() : total_wait(0), num_served(0) {}
-    
-    void setTimes(int max_size) {
-        this->max_size = max_size;
-    }
     
     void init(EntranceQueue *entrance_queue, EatingQueue *eating_queue) {
         this->entrance_queue = entrance_queue;
@@ -29,14 +24,14 @@ public:
     }
     
     void setMaxSize(int m) {
-        max_size = m;
+        eating_queue->max_size = m;
     }
     
     void update(int clock) {
         if(!the_queue.empty()) {
             
         }
-        if (the_queue.size() < max_size) {
+        if (the_queue.size() < eating_queue->max_size) {
             if (!entrance_queue->the_queue.empty()) {
                 Customer *customer = entrance_queue->the_queue.front();
                 entrance_queue->the_queue.pop();
