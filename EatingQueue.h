@@ -14,6 +14,10 @@ public:
     
     int max_size;
     
+    void setMaxSize(int m) {
+        max_size = m;
+    }
+    
     void remove(Customer *customer) {
         
     }

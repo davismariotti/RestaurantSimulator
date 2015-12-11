@@ -23,10 +23,6 @@ public:
         this->eating_queue = eating_queue;
     }
     
-    void setMaxSize(int m) {
-        eating_queue->max_size = m;
-    }
-    
     void update(int clock) {
         if(!the_queue.empty()) {
             
