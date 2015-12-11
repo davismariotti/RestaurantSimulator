@@ -58,6 +58,10 @@ public:
         
         int table_count = read_int("How many tables will the restaurant have: ", 1, INT_MAX);
         eating_queue->setMaxSize(table_count);
+        
+        int rate = read_int("How many people will come each hour: ", 1, INT_MAX);
+        double a_rate = rate / 60.0;
+        entrance_queue->set_arrival_rate(a_rate);
     }
     
     
