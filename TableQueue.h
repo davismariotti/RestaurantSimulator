@@ -17,6 +17,7 @@ private:
     int total_wait;
     int num_served;
     
+    
 public:
     TableQueue() : total_wait(0), num_served(0) {}
     
@@ -35,7 +36,7 @@ public:
                 entrance_queue->the_queue.pop();
                 entrance_queue->num_served++;
                 entrance_queue->total_wait += clock - customer->arrival_time;
-                assignDishToCustomer(customer);
+                assignDishToCustomer(customer, clock);
                 customer->setTimeInQueue(customer->time_in_queue);
                 the_queue.push(customer);
                 
@@ -43,8 +44,9 @@ public:
         }
     }
     
-    void assignDishToCustomer(Customer *customer) {
-        SelectionData(new ChickenSoup(), new Spaghetti(), new ChickenSoup());
+    void assignDishToCustomer(Customer *customer, int clock) {
+        SelectionData *data = new SelectionData(new ChickenSoup(clock), new Spaghetti(clock), new ChickenSoup(clock));
+        eating_queue->addDishPair(customer, data);
         customer->setTimeInQueue(20);
     }
 };

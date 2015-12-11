@@ -21,6 +21,10 @@ public:
         max_size = m;
     }
     
+    void addDishPair(Customer *customer, SelectionData *data) {
+        dishes.insert(std::pair<Customer *, SelectionData *>(customer, data));
+    }
+    
     void remove(Customer *customer) {
         
     }

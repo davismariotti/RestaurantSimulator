@@ -9,7 +9,7 @@ public:
         this->start = clock;
     }
     
-    virtual bool isReady() = 0;
+    virtual bool isReady(int clock) = 0;
     
     virtual int timeToEat() = 0;
 };
