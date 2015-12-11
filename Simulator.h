@@ -62,7 +62,9 @@ public:
     
     void run() {
         for(clock = 0; clock < total_time; ++clock) {
-            
+            entrance_queue->update(clock);
+            table_queue->update(clock);
+            eating_queue->update(clock);
         }
     }
 };
