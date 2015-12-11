@@ -13,6 +13,9 @@ private:
 	int time_to_eat_min = 15;
 	int time_to_eat_max = 20;
 public:
+    
+    CaesarSalad(int clock) : Dish(clock) {}
+    
 	bool isReady(int clock) {
 		return (clock - start) > time_until_ready;
 	}
