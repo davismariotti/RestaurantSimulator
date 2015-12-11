@@ -5,14 +5,14 @@ class Dish {
 protected:
     int start;
 public:
-    Dish (clock) {
+    Dish (int clock) {
         this->start = clock;
     }
     
-    bool isReady() = 0;
+    virtual bool isReady() = 0;
     
-    int timeToEat() = 0;
-}
+    virtual int timeToEat() = 0;
+};
 
 
 #endif
