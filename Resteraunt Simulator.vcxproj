@@ -112,6 +112,7 @@
     <ClInclude Include="Spaghetti.h" />
     <ClInclude Include="Steak.h" />
     <ClInclude Include="TableQueue.h" />
+    <ClInclude Include="Tacos.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
