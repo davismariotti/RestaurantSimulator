@@ -100,6 +100,7 @@
     <ClCompile Include="RestaurantSimulator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Burger.h" />
     <ClInclude Include="CaesarSalad.h" />
     <ClInclude Include="ChickenSoup.h" />
     <ClInclude Include="Customer.h" />
