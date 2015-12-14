@@ -21,7 +21,7 @@ public:
 	}
 
 	int timeToEat(void) {
-		return time_to_eat_min + new Random().next_int(time_to_eat_max - time_to_eat_min);
+		return time_to_eat_min + _random.next_int(time_to_eat_max - time_to_eat_min);
 	}
 };
 
