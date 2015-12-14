@@ -30,6 +30,10 @@ public:
         return current_course;
     }
     
+    void setCurrentCourse(int c) {
+        current_course = c;
+    }
+    
     void nextCourse() {
         current_course++;
     }
