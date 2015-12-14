@@ -36,16 +36,25 @@ public:
     
     void update(int clock) {
         if(!the_queue.empty()) {
-            
+            Customer *customer = the_queue.top();
+            if(clock - customer->getArrivalTime() > customer->getTimeInQueue()) {
+                // If the customer is ready to be served their food
+                the_queue.pop();
+                eating_queue->add(customer);
+                num_served++;
+                total_wait += clock = customer->getArrivalTime();
+                customer->setArrivalTime(clock);
+            }
         }
-        if (the_queue.size() < eating_queue->max_size) {
-            if (!entrance_queue->the_queue.empty()) {
+        if (the_queue.size() < eating_queue->max_size) { // If there is room in the restaurant
+            if (!entrance_queue->the_queue.empty()) { // If there are people waiting to be seated
                 Customer *customer = entrance_queue->the_queue.front();
                 entrance_queue->the_queue.pop();
                 entrance_queue->num_served++;
                 entrance_queue->total_wait += clock - customer->getArrivalTime();
                 assignDishToCustomer(customer, clock);
-                customer->setTimeInQueue(customer->getTimeInQueue());
+                customer->setTimeInQueue(15 + _random.next_int(10));
+                customer->setArrivalTime(clock);
                 the_queue.push(customer);
                 
             }
@@ -79,9 +88,8 @@ public:
     }
     
     void assignDishToCustomer(Customer *customer, int clock) {
-        SelectionData *data = new SelectionData(rand_Dish(clock), new Spaghetti(clock), new ChickenSoup(clock));
+        SelectionData *data = new SelectionData(rand_Dish(clock), rand_Dish(clock), rand_Dish(clock));
         eating_queue->addDishPair(customer, data);
-        customer->setTimeInQueue(20);
     }
 };
 

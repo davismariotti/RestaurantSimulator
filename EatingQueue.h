@@ -26,8 +26,15 @@ public:
         dishes.insert(std::pair<Customer *, SelectionData *>(customer, data));
     }
     
+    void add(Customer *customer) {
+        the_queue.push(customer);
+        customer->setTimeInQueue(dishes[customer]->getAppetizer()->timeToEat());
+    }
+    
     void remove(Customer *customer) {
+        dishes.erase(customer);
         delete customer;
+        num_served++;
     }
     
     void update(int clock) {
@@ -35,7 +42,16 @@ public:
             //Pulls top customer, but does not remove from queue
             Customer *customer = the_queue.top();
             if (customer->ready(clock)) {
-                
+                SelectionData *data = dishes[customer];
+                switch (customer->getCurrentCourse()) {
+                    case 0:
+                        customer->setTimeInQueue(data->getEntree()->timeToEat());
+                        break;
+                    case 1:
+                        customer->setTimeInQueue(data->getDessert()->timeToEat());
+                    case 2:
+                        remove(customer);
+                }
             }
         }
     }
