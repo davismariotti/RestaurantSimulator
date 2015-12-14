@@ -53,7 +53,7 @@ public:
     }
     
     Dish * rand_Dish(int clock) {
-        int rand = _random.next_int(9);
+        int rand = _random.next_int(6); // Must be the number of different foods
         switch (rand) {
             case 0:
                 return new Burger(clock);
