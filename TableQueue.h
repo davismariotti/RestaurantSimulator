@@ -9,6 +9,9 @@
 #include "Spaghetti.h"
 #include "Random.h"
 #include "Burger.h"
+#include "Steak.h"
+#include "Chicken_Strips.h"
+#include "CaesarSalad.h"
 
 extern Random _random;
 
@@ -56,6 +59,16 @@ public:
                 break;
             case 1:
                 return new ChickenSoup(clock);
+				break;
+			case 2: 
+				return new Chicken_Strips(clock);
+				break;
+			case 3: 
+				return new CaesarSalad(clock);
+				break;
+			case 4:
+				return new Steak(clock);
+				break;
             default:
                 return new Spaghetti(clock);
         }
