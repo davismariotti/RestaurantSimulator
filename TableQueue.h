@@ -70,9 +70,6 @@ public:
 			case 4:
 				return new Steak(clock);
 				break;
-			case 5:
-				return new Taco(clock);
-				break;
             default:
                 return new Spaghetti(clock);
         }
