@@ -103,6 +103,7 @@
     <ClInclude Include="Burger.h" />
     <ClInclude Include="CaesarSalad.h" />
     <ClInclude Include="ChickenSoup.h" />
+    <ClInclude Include="Chicken_Strips.h" />
     <ClInclude Include="Customer.h" />
     <ClInclude Include="Dish.h" />
     <ClInclude Include="EatingQueue.h" />
