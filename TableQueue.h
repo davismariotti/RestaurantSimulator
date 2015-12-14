@@ -12,6 +12,7 @@
 #include "Steak.h"
 #include "Chicken_Strips.h"
 #include "CaesarSalad.h"
+#include "Taco.h"
 
 extern Random _random;
 
