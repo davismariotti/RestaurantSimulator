@@ -7,12 +7,12 @@
 #include "EatingQueue.h"
 #include "ChickenSoup.h"
 #include "Spaghetti.h"
-#include "Random.h"
 #include "Burger.h"
 #include "Steak.h"
 #include "Chicken_Strips.h"
 #include "CaesarSalad.h"
 #include "Taco.h"
+#include "Random.h"
 
 extern Random _random;
 
