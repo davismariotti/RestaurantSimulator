@@ -1,5 +1,5 @@
-#ifndef CHICKEN_STRIPS_h
-#define CHICKEN_STRIPS_h
+#ifndef CHICKENSTRIPS_h
+#define CHICKENSTRIPS_h
 
 #include "Dish.h"
 #include "Simulator.h"
@@ -7,14 +7,14 @@
 
 extern Random _random;
 
-class Chicken_Strips : public Dish {
+class ChickenStrips : public Dish {
 private:
 	int time_until_ready = 15;
 	int time_to_eat_min = 10;
 	int time_to_eat_max = 25;
 public:
 
-	Chicken_Strips(int clock) : Dish(clock) {}
+	ChickenStrips(int clock) : Dish(clock) {}
 
 	bool isReady(int clock) {
 		return (clock - start) > time_until_ready;

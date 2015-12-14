@@ -9,7 +9,7 @@
 #include "Spaghetti.h"
 #include "Burger.h"
 #include "Steak.h"
-#include "Chicken_Strips.h"
+#include "ChickenStrips.h"
 #include "CaesarSalad.h"
 #include "Taco.h"
 #include "Random.h"
@@ -71,7 +71,7 @@ public:
                 return new ChickenSoup(clock);
 				break;
 			case 2: 
-				return new Chicken_Strips(clock);
+				return new ChickenStrips(clock);
 				break;
 			case 3: 
 				return new CaesarSalad(clock);
