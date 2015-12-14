@@ -21,7 +21,7 @@ private:
     EntranceQueue *entrance_queue;
     EatingQueue *eating_queue;
     
-    std::priority_queue<Customer *> the_queue;
+    std::priority_queue<Customer *, std::deque<Customer *>, CompareCustomer> the_queue;
     int total_wait;
     int num_served;
     

@@ -8,7 +8,7 @@
 
 class EatingQueue {
 private:
-    std::priority_queue<Customer *> the_queue;
+    std::priority_queue<Customer *, std::deque<Customer *>, CompareCustomer> the_queue;
     std::map<Customer *, SelectionData *> dishes;
     int total_wait;
     int num_served;
@@ -31,11 +31,12 @@ public:
         customer->setTimeInQueue(dishes[customer]->getAppetizer()->timeToEat());
     }
     
-    void remove(Customer *customer) {
-        std::cout << &customer << std::endl;
-        dishes.erase(customer);
-        //delete customer;
+    void remove(Customer *customer, int clock) {
         num_served++;
+        total_wait += clock - customer->getArrivalTime();
+        dishes.erase(customer);
+        the_queue.pop();
+        delete customer;
     }
     
     void update(int clock) {
@@ -48,12 +49,14 @@ public:
                     case 0:
                         customer->setTimeInQueue(data->getEntree()->timeToEat());
                         customer->setCurrentCourse(1);
+                        customer->setArrivalTime(clock);
                         break;
                     case 1:
                         customer->setTimeInQueue(data->getDessert()->timeToEat());
                         customer->setCurrentCourse(2);
+                        customer->setArrivalTime(clock);
                     case 2:
-                        remove(customer);
+                        remove(customer, clock);
                 }
             }
         }

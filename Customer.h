@@ -18,7 +18,7 @@ public:
         arrival_time = t;
     }
     
-    int getTimeInQueue() {
+    int getTimeInQueue() const {
         return time_in_queue;
     }
     
@@ -42,10 +42,13 @@ public:
         return arrival_time + time_in_queue < clock;
     }
     
-    bool operator<(Customer const & c2) {
-        return time_in_queue < c2.time_in_queue;
+};
+
+struct CompareCustomer {
+public:
+    bool operator()(Customer const *c1, Customer const *c2) const {
+        return c1->getTimeInQueue() < c2->getTimeInQueue();
     }
-    
 };
 
 

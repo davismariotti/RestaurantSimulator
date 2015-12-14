@@ -80,7 +80,7 @@ public:
         std::cout << "TableQueue - Average Wait: " << table_queue->getTotalWait() / table_queue->getNumServed() << std::endl;
         std::cout << "EatingQueue - Total Wait: " << eating_queue->getTotalWait() << std::endl;
         std::cout << "EatingQueue - Number Served: " << eating_queue->getNumServed() << std::endl;
-        //std::cout << "EatingQueue - Average Wait: " << eating_queue->getTotalWait() / eating_queue->getNumServed() << std::endl;
+        std::cout << "EatingQueue - Average Wait: " << eating_queue->getTotalWait() / eating_queue->getNumServed() << std::endl;
     }
 };
 
