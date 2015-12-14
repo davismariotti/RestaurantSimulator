@@ -14,12 +14,24 @@ public:
         time_in_queue = t;
     }
     
+    void setArrivalTime(int t) {
+        arrival_time = t;
+    }
+    
     int getTimeInQueue() {
         return time_in_queue;
     }
     
     int getArrivalTime() {
         return arrival_time;
+    }
+    
+    int getCurrentCourse() {
+        return current_course;
+    }
+    
+    void nextCourse() {
+        current_course++;
     }
     
     bool ready(int clock) {
