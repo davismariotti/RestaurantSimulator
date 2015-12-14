@@ -7,6 +7,10 @@
 #include "EatingQueue.h"
 #include "ChickenSoup.h"
 #include "Spaghetti.h"
+#include "Random.h"
+#include "Burger.h"
+
+extern Random _random;
 
 class TableQueue {
 private:
@@ -44,8 +48,21 @@ public:
         }
     }
     
+    Dish * rand_Dish(int clock) {
+        int rand = _random.next_int(9);
+        switch (rand) {
+            case 0:
+                return new Burger(clock);
+                break;
+            case 1:
+                return new ChickenSoup(clock);
+            default:
+                return new Spaghetti(clock);
+        }
+    }
+    
     void assignDishToCustomer(Customer *customer, int clock) {
-        SelectionData *data = new SelectionData(new ChickenSoup(clock), new Spaghetti(clock), new ChickenSoup(clock));
+        SelectionData *data = new SelectionData(rand_Dish(clock), new Spaghetti(clock), new ChickenSoup(clock));
         eating_queue->addDishPair(customer, data);
         customer->setTimeInQueue(20);
     }
