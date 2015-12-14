@@ -42,7 +42,7 @@ public:
                 the_queue.pop();
                 eating_queue->add(customer);
                 num_served++;
-                total_wait += clock = customer->getArrivalTime();
+                total_wait += clock - customer->getArrivalTime();
                 customer->setArrivalTime(clock);
             }
         }
@@ -90,6 +90,14 @@ public:
     void assignDishToCustomer(Customer *customer, int clock) {
         SelectionData *data = new SelectionData(rand_Dish(clock), rand_Dish(clock), rand_Dish(clock));
         eating_queue->addDishPair(customer, data);
+    }
+    
+    int getTotalWait() {
+        return total_wait;
+    }
+    
+    int getNumServed() {
+        return num_served;
     }
 };
 

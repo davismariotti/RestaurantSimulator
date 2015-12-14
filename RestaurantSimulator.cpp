@@ -5,7 +5,7 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    Simulator sim;
+    Simulator sim = Simulator();
     sim.init();
     sim.run();
 }

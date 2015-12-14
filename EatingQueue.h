@@ -32,8 +32,9 @@ public:
     }
     
     void remove(Customer *customer) {
+        std::cout << &customer << std::endl;
         dishes.erase(customer);
-        delete customer;
+        //delete customer;
         num_served++;
     }
     
@@ -46,14 +47,24 @@ public:
                 switch (customer->getCurrentCourse()) {
                     case 0:
                         customer->setTimeInQueue(data->getEntree()->timeToEat());
+                        customer->setCurrentCourse(1);
                         break;
                     case 1:
                         customer->setTimeInQueue(data->getDessert()->timeToEat());
+                        customer->setCurrentCourse(2);
                     case 2:
                         remove(customer);
                 }
             }
         }
+    }
+    
+    int getTotalWait() {
+        return total_wait;
+    }
+    
+    int getNumServed() {
+        return num_served;
     }
 };
 

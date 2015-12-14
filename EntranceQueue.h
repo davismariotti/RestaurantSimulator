@@ -38,6 +38,14 @@ public:
         }
     }
     
+    int getTotalWait() {
+        return total_wait;
+    }
+    
+    int getNumServed() {
+        return num_served;
+    }
+    
     friend class TableQueue;
 };
 

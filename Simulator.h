@@ -71,6 +71,16 @@ public:
             table_queue->update(clock);
             eating_queue->update(clock);
         }
+        
+        std::cout << "EntranceQueue - Total Wait: " << entrance_queue->getTotalWait() << std::endl;
+        std::cout << "EntranceQueue - Number Served: " << entrance_queue->getNumServed() << std::endl;
+        std::cout << "EntranceQueue - Average Wait: " << entrance_queue->getTotalWait() / entrance_queue->getNumServed() << std::endl;
+        std::cout << "TableQueue - Total Wait: " << table_queue->getTotalWait() << std::endl;
+        std::cout << "TableQueue - Number Served: " << table_queue->getNumServed() << std::endl;
+        std::cout << "TableQueue - Average Wait: " << table_queue->getTotalWait() / table_queue->getNumServed() << std::endl;
+        std::cout << "EatingQueue - Total Wait: " << eating_queue->getTotalWait() << std::endl;
+        std::cout << "EatingQueue - Number Served: " << eating_queue->getNumServed() << std::endl;
+        //std::cout << "EatingQueue - Average Wait: " << eating_queue->getTotalWait() / eating_queue->getNumServed() << std::endl;
     }
 };
 
