@@ -4,6 +4,7 @@
 #include <queue>
 #include <map>
 #include "SelectionData.h"
+#include "Customer.h"
 
 class EatingQueue {
 private:
@@ -26,11 +27,17 @@ public:
     }
     
     void remove(Customer *customer) {
-        
+        delete customer;
     }
     
     void update(int clock) {
-        
+        if (!the_queue.empty()) {
+            //Pulls top customer, but does not remove from queue
+            Customer *customer = the_queue.top();
+            if (customer->ready(clock)) {
+                
+            }
+        }
     }
 };
 

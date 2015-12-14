@@ -43,9 +43,9 @@ public:
                 Customer *customer = entrance_queue->the_queue.front();
                 entrance_queue->the_queue.pop();
                 entrance_queue->num_served++;
-                entrance_queue->total_wait += clock - customer->arrival_time;
+                entrance_queue->total_wait += clock - customer->getArrivalTime();
                 assignDishToCustomer(customer, clock);
-                customer->setTimeInQueue(customer->time_in_queue);
+                customer->setTimeInQueue(customer->getTimeInQueue());
                 the_queue.push(customer);
                 
             }
