@@ -53,6 +53,7 @@ public:
 
     void init() {
         std::cout << "Welcome to the Restaurant Simulator" << std::endl;
+        std::cout << "Source: https://github.com/davismariotti/RestaurantSimulator" << std::endl;
         std::cout << "Completed by Alex Blair and Davis Mariotti" << std::endl;
         total_time = read_int("Please enter the simulation time (hours): ", 1, INT_MAX);
         total_time *= 60;
@@ -82,6 +83,7 @@ public:
         std::cout << "Average Wait for first meal: " << table_queue->getTotalWait() / table_queue->getNumServed() << " minutes" << std::endl << std::endl;
         
         std::cout << "How many people completed all meals: " << eating_queue->getNumServed() << " people" << std::endl;
+        std::cout << "How many people were still eating: " << eating_queue->size() << " people" << std::endl;
         std::cout << "Average Wait for each meal: " << eating_queue->getTotalWait() / 3 / eating_queue->getNumServed() << " minutes" << std::endl;
         std::cout << "Average time for customer to leave restaurant: " << eating_queue->getCustomerTotalWait() / eating_queue->getNumServed() << " minutes" << std::endl;
         
