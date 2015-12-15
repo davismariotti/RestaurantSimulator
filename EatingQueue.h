@@ -58,6 +58,7 @@ public:
             if (customer->ready(clock)) {
                 // Customer is ready to move on to the next stage of their meal
                 SelectionData *data = dishes[customer];
+                the_queue.pop();
                 switch (customer->getCurrentCourse()) {
                     case 0:
                         total_wait += clock - customer->getArrivalTime();
@@ -65,6 +66,7 @@ public:
                         customer->setTimeInQueue(data->getEntree()->timeToEat());
                         customer->setCurrentCourse(1);
                         customer->setArrivalTime(clock);
+                        the_queue.push(customer);
                         break;
                     case 1:
                         total_wait += clock - customer->getArrivalTime();
@@ -72,6 +74,7 @@ public:
                         customer->setTimeInQueue(data->getDessert()->timeToEat());
                         customer->setCurrentCourse(2);
                         customer->setArrivalTime(clock);
+                        the_queue.push(customer);
                         break;
                     case 2:
                         remove(customer, clock);

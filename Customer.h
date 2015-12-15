@@ -54,7 +54,7 @@ public:
     }
     
     bool ready(int clock) {
-        return arrival_time + time_in_queue < clock;
+        return arrival_time + time_in_queue <= clock;
     }
     
 };
@@ -62,7 +62,7 @@ public:
 struct CompareCustomer {
 public:
     bool operator()(Customer const *c1, Customer const *c2) const {
-        return c1->getClockTimeReady() < c2->getClockTimeReady();
+        return c1->getClockTimeReady() > c2->getClockTimeReady();
     }
 };
 
