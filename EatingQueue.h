@@ -39,8 +39,8 @@ public:
     }
     
     void add(Customer *customer) {
+		customer->setTimeInQueue(dishes[customer]->getAppetizer()->timeToEat());
         the_queue0.push(customer);
-        customer->setTimeInQueue(dishes[customer]->getAppetizer()->timeToEat());
     }
     
     void remove(Customer *customer, int clock) {
