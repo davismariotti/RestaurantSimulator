@@ -53,7 +53,6 @@ public:
                 entrance_queue->the_queue.pop();
                 entrance_queue->num_served++;
                 entrance_queue->total_wait += clock - customer->getArrivalTime();
-                //customer->incrementTotalTime(clock - customer->getArrivalTime());
                 assignDishToCustomer(customer, clock);
                 customer->setTimeInQueue(eating_queue->getFirstDishTime(customer));
                 customer->setArrivalTime(clock);
