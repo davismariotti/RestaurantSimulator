@@ -76,10 +76,10 @@ public:
         std::cout << "How many people showed up: " << entrance_queue->size() + entrance_queue->getNumServed() << " people" << std::endl;
         std::cout << "How many people were seated : " << entrance_queue->getNumServed() << " people" << std::endl;
         std::cout << "Average wait to be seated: " << entrance_queue->getTotalWait() / entrance_queue->getNumServed() << " minutes" << std::endl;
-        std::cout << "How many people were left waiting at the door: " << entrance_queue->size() << " people" << std::endl;
+        std::cout << "How many people were left waiting at the door: " << entrance_queue->size() << " people" << std::endl << std::endl;
 
         std::cout << "How many people were given their first meal: " << table_queue->getNumServed() << " people" << std::endl;
-        std::cout << "Average Wait for first meal: " << table_queue->getTotalWait() / table_queue->getNumServed() << " minutes" << std::endl;
+        std::cout << "Average Wait for first meal: " << table_queue->getTotalWait() / table_queue->getNumServed() << " minutes" << std::endl << std::endl;
         
         std::cout << "How many people completed all meals: " << eating_queue->getNumServed() << " people" << std::endl;
         std::cout << "Average Wait for each meal: " << eating_queue->getTotalWait() / 3 / eating_queue->getNumServed() << " minutes" << std::endl;
