@@ -40,6 +40,7 @@ public:
 	}
 
 	void update(int clock) {
+        // Debug std::cout << eating_queue->size() << " " << the_queue.size() << " " << entrance_queue->size() << std::endl;
 		if (!the_queue.empty()) {
 			Customer *customer = the_queue.top();
 			if (customer->ready(clock)) {
@@ -68,8 +69,7 @@ public:
 	}
 
 	Dish * rand_Dish(int clock, int choice) {
-		if (choice == 0)
-		{
+		if (choice == 0) {
 			int rand = _random.next_int(3); // Must be the number of different foods
 			switch (rand) {
 			case 0:
@@ -84,10 +84,7 @@ public:
 			default:
 				return new CaesarSalad(clock);
 			}
-		}
-
-
-		if (choice == 1) {
+		} else if (choice == 1) {
 			int rand = _random.next_int(5); // Must be the number of different foods
 			switch (rand) {
 			case 0:
@@ -108,10 +105,7 @@ public:
 			default:
 				return new Spaghetti(clock);
 			}
-		}
-
-
-		if (choice == 3) {
+		} else {
 			int rand = _random.next_int(3); // Must be the number of different foods
 			switch (rand) {
 			case 0:
@@ -131,7 +125,7 @@ public:
 
     
     void assignDishToCustomer(Customer *customer, int clock) {
-        SelectionData *data = new SelectionData(rand_Dish(clock,0), rand_Dish(clock,1), rand_Dish(clock,2));
+        SelectionData *data = new SelectionData(rand_Dish(clock, 0), rand_Dish(clock, 1), rand_Dish(clock, 2));
         eating_queue->addDishPair(customer, data);
     }
     
