@@ -8,4 +8,5 @@ int main(int argc, const char * argv[]) {
     Simulator sim = Simulator();
     sim.init();
     sim.run();
+	return 0;
 }

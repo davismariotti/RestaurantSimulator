@@ -4,6 +4,7 @@
 #include <queue>
 #include <string>
 #include "Customer.h"
+#include "Random.h"
 
 extern Random _random;
 
