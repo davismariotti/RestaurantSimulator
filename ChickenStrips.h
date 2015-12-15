@@ -9,9 +9,9 @@ extern Random _random;
 
 class ChickenStrips : public Dish {
 private:
-	int time_until_ready = 15;
-	int time_to_eat_min = 10;
-	int time_to_eat_max = 25;
+	int time_until_ready = 9;
+	int time_to_eat_min = 7;
+	int time_to_eat_max = 15;
 public:
 
 	ChickenStrips(int clock) : Dish(clock) {}

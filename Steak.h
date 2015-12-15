@@ -9,9 +9,9 @@ extern Random _random;
 
 class Steak : public Dish {
 private:
-	int time_until_ready = 40;
-	int time_to_eat_min = 25;
-	int time_to_eat_max = 35;
+	int time_until_ready = 20;
+	int time_to_eat_min = 15;
+	int time_to_eat_max = 25;
 public:
 
 	Steak(int clock) : Dish(clock) {}
