@@ -8,7 +8,9 @@
 
 class EatingQueue {
 private:
-    std::priority_queue<Customer *, std::deque<Customer *>, CompareCustomer> the_queue;
+    std::priority_queue<Customer *, std::deque<Customer *>, CompareCustomer> the_queue0;
+    std::priority_queue<Customer *, std::deque<Customer *>, CompareCustomer> the_queue1;
+    std::priority_queue<Customer *, std::deque<Customer *>, CompareCustomer> the_queue2;
     std::map<Customer *, SelectionData *> dishes;
     int total_wait;
     int num_served;
@@ -25,7 +27,7 @@ public:
     }
     
     size_t size() {
-        return the_queue.size();
+        return the_queue1.size() + the_queue0.size() + the_queue2.size();
     }
     
     void addDishPair(Customer *customer, SelectionData *data) {
@@ -37,7 +39,7 @@ public:
     }
     
     void add(Customer *customer) {
-        the_queue.push(customer);
+        the_queue0.push(customer);
         customer->setTimeInQueue(dishes[customer]->getAppetizer()->timeToEat());
     }
     
@@ -47,39 +49,47 @@ public:
         customer->incrementTotalTime(clock - customer->getArrivalTime());
         total_customer_wait += customer->getTotalTime();
         dishes.erase(customer);
-        the_queue.pop();
         delete customer;
     }
     
     void update(int clock) {
-        if (!the_queue.empty()) {
+        if (!the_queue0.empty()) {
             // Pulls top customer, but does not remove from queue
-            Customer *customer = the_queue.top();
+            Customer *customer = the_queue0.top();
             if (customer->ready(clock)) {
+                the_queue0.pop();
                 // Customer is ready to move on to the next stage of their meal
                 SelectionData *data = dishes[customer];
-                the_queue.pop();
-                switch (customer->getCurrentCourse()) {
-                    case 0:
-                        total_wait += clock - customer->getArrivalTime();
-                        customer->incrementTotalTime(clock - customer->getArrivalTime());
-                        customer->setTimeInQueue(data->getEntree()->timeToEat());
-                        customer->setCurrentCourse(1);
-                        customer->setArrivalTime(clock);
-                        the_queue.push(customer);
-                        break;
-                    case 1:
-                        total_wait += clock - customer->getArrivalTime();
-                        customer->incrementTotalTime(clock - customer->getArrivalTime());
-                        customer->setTimeInQueue(data->getDessert()->timeToEat());
-                        customer->setCurrentCourse(2);
-                        customer->setArrivalTime(clock);
-                        the_queue.push(customer);
-                        break;
-                    case 2:
-                        remove(customer, clock);
-                        break;
-                }
+                total_wait += clock - customer->getArrivalTime();
+                customer->incrementTotalTime(clock - customer->getArrivalTime());
+                customer->setTimeInQueue(data->getEntree()->timeToEat());
+                customer->setCurrentCourse(1);
+                customer->setArrivalTime(clock);
+                the_queue1.push(customer);
+            }
+        }
+        if (!the_queue1.empty()) {
+            // Pulls top customer, but does not remove from queue
+            Customer *customer = the_queue1.top();
+            if (customer->ready(clock)) {
+                the_queue1.pop();
+                // Customer is ready to move on to the next stage of their meal
+                SelectionData *data = dishes[customer];
+                total_wait += clock - customer->getArrivalTime();
+                customer->incrementTotalTime(clock - customer->getArrivalTime());
+                customer->setTimeInQueue(data->getEntree()->timeToEat());
+                customer->setCurrentCourse(2);
+                customer->setArrivalTime(clock);
+                the_queue2.push(customer);
+            }
+        }
+        if (!the_queue2.empty()) {
+            // Pulls top customer, but does not remove from queue
+            Customer *customer = the_queue2.top();
+            if (customer->ready(clock)) {
+                the_queue2.pop();
+                // Customer is ready to move on to the next stage of their meal
+                remove(customer, clock);
             }
         }
     }
