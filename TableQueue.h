@@ -109,22 +109,23 @@ public:
 				return new Spaghetti(clock);
 			}
 		}
-	
 
-	if (choice == 3) {
-		int rand = _random.next_int(3); // Must be the number of different foods
-		switch (rand) {
-		case 0:
-			return new Pie(clock);
-			break;
-		case 1:
-			return new IceCream(clock);
-			break;
-		case 2:
-			return new Cheesecake(clock);
-			break;
-		default:
-			return new IceCream(clock);
+
+		if (choice == 3) {
+			int rand = _random.next_int(3); // Must be the number of different foods
+			switch (rand) {
+			case 0:
+				return new Pie(clock);
+				break;
+			case 1:
+				return new IceCream(clock);
+				break;
+			case 2:
+				return new Cheesecake(clock);
+				break;
+			default:
+				return new IceCream(clock);
+			}
 		}
 	}
 
