@@ -13,8 +13,10 @@ private:
     int total_wait;
     int num_served;
     
+    int total_customer_wait;
+    
 public:
-    EatingQueue() : total_wait(0), num_served(0) {}
+    EatingQueue() : total_wait(0), num_served(0), total_customer_wait(0) {}
     
     int max_size;
     
@@ -33,8 +35,9 @@ public:
     
     void remove(Customer *customer, int clock) {
         num_served++;
-        std::cout << "total_wait-d += " << clock << " - " << customer->getArrivalTime() << " = " << clock - customer->getArrivalTime() << std:: endl;
         total_wait += clock - customer->getArrivalTime();
+        customer->incrementTotalTime(clock - customer->getArrivalTime());
+        total_customer_wait += customer->getTotalTime();
         dishes.erase(customer);
         the_queue.pop();
         delete customer;
@@ -49,20 +52,22 @@ public:
                 SelectionData *data = dishes[customer];
                 switch (customer->getCurrentCourse()) {
                     case 0:
-                        std::cout << "total_wait-a += " << clock << " - " << customer->getArrivalTime() << " = " << clock - customer->getArrivalTime() << std:: endl;
                         total_wait += clock - customer->getArrivalTime();
+                        customer->incrementTotalTime(clock - customer->getArrivalTime());
                         customer->setTimeInQueue(data->getEntree()->timeToEat());
                         customer->setCurrentCourse(1);
                         customer->setArrivalTime(clock);
                         break;
                     case 1:
-                        std::cout << "total_wait-e += " << clock << " - " << customer->getArrivalTime() << " = " << clock - customer->getArrivalTime() << std:: endl;
                         total_wait += clock - customer->getArrivalTime();
+                        customer->incrementTotalTime(clock - customer->getArrivalTime());
                         customer->setTimeInQueue(data->getDessert()->timeToEat());
                         customer->setCurrentCourse(2);
                         customer->setArrivalTime(clock);
+                        break;
                     case 2:
                         remove(customer, clock);
+                        break;
                 }
             }
         }
@@ -74,6 +79,10 @@ public:
     
     int getNumServed() {
         return num_served;
+    }
+    
+    int getCustomerTotalWait() {
+        return total_customer_wait;
     }
 };
 

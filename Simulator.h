@@ -53,6 +53,7 @@ public:
 
     void init() {
         std::cout << "Welcome to the Restaurant Simulator" << std::endl;
+        std::cout << "Completed by Alex Blair and Davis Mariotti" << std::endl;
         total_time = read_int("Please enter the simulation time (hours): ", 1, INT_MAX);
         total_time *= 60;
         
@@ -72,15 +73,18 @@ public:
             eating_queue->update(clock);
         }
         
-        std::cout << "EntranceQueue - Total Wait: " << entrance_queue->getTotalWait() << std::endl;
-        std::cout << "EntranceQueue - Number Served: " << entrance_queue->getNumServed() << std::endl;
-        std::cout << "EntranceQueue - Average Wait: " << entrance_queue->getTotalWait() / entrance_queue->getNumServed() << std::endl;
-        std::cout << "TableQueue - Total Wait: " << table_queue->getTotalWait() << std::endl;
-        std::cout << "TableQueue - Number Served: " << table_queue->getNumServed() << std::endl;
-        std::cout << "TableQueue - Average Wait: " << table_queue->getTotalWait() / table_queue->getNumServed() << std::endl;
-        std::cout << "EatingQueue - Total Wait: " << eating_queue->getTotalWait() << std::endl;
-        std::cout << "EatingQueue - Number Served: " << eating_queue->getNumServed() << std::endl;
-        std::cout << "EatingQueue - Average Wait: " << eating_queue->getTotalWait() / eating_queue->getNumServed() << std::endl;
+        std::cout << "How many people showed up: " << entrance_queue->size() + entrance_queue->getNumServed() << " people" << std::endl;
+        std::cout << "How many people were seated : " << entrance_queue->getNumServed() << " people" << std::endl;
+        std::cout << "Average wait to be seated: " << entrance_queue->getTotalWait() / entrance_queue->getNumServed() << " minutes" << std::endl;
+        std::cout << "How many people were left waiting at the door: " << entrance_queue->size() << " people" << std::endl;
+
+        std::cout << "How many people were given their first meal: " << table_queue->getNumServed() << " people" << std::endl;
+        std::cout << "Average Wait for first meal: " << table_queue->getTotalWait() / table_queue->getNumServed() << " minutes" << std::endl;
+        
+        std::cout << "How many people completed all meals: " << eating_queue->getNumServed() << " people" << std::endl;
+        std::cout << "Average Wait for each meal: " << eating_queue->getTotalWait() / eating_queue->getNumServed() << " minutes" << std::endl;
+        std::cout << "Average time for customer to leave restaurant: " << eating_queue->getCustomerTotalWait() / eating_queue->getNumServed() << " minutes" << std::endl;
+        
     }
 };
 

@@ -43,6 +43,7 @@ public:
                 eating_queue->add(customer);
                 num_served++;
                 total_wait += clock - customer->getArrivalTime();
+                customer->incrementTotalTime(clock - customer->getArrivalTime());
                 customer->setArrivalTime(clock);
             }
         }
@@ -52,6 +53,7 @@ public:
                 entrance_queue->the_queue.pop();
                 entrance_queue->num_served++;
                 entrance_queue->total_wait += clock - customer->getArrivalTime();
+                customer->incrementTotalTime(clock - customer->getArrivalTime());
                 assignDishToCustomer(customer, clock);
                 customer->setTimeInQueue(15 + _random.next_int(10));
                 customer->setArrivalTime(clock);

@@ -21,14 +21,6 @@ public:
         this->arrival_rate = arrival_rate;
     }
     
-    int get_total_wait() {
-        return total_wait;
-    }
-    
-    int get_num_served() {
-        return num_served;
-    }
-    
     long size() {
         return the_queue.size();
     }
