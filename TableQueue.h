@@ -46,11 +46,11 @@ public:
 			if (customer->ready(clock)) {
 				// If the customer is ready to be served their food
 				the_queue.pop();
-				eating_queue->add(customer);
 				num_served++;
 				total_wait += clock - customer->getArrivalTime();
 				customer->incrementTotalTime(clock - customer->getArrivalTime());
 				customer->setArrivalTime(clock);
+				eating_queue->add(customer);
 			}
 		}
 		if ((the_queue.size() + eating_queue->size()) < eating_queue->max_size) { // If there is room in the restaurant
