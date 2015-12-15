@@ -37,7 +37,7 @@ public:
     void update(int clock) {
         if(!the_queue.empty()) {
             Customer *customer = the_queue.top();
-            if(clock - customer->getArrivalTime() > customer->getTimeInQueue()) {
+            if(customer->ready(clock)) {
                 // If the customer is ready to be served their food
                 the_queue.pop();
                 eating_queue->add(customer);
@@ -47,15 +47,15 @@ public:
                 customer->setArrivalTime(clock);
             }
         }
-        if (the_queue.size() < eating_queue->max_size) { // If there is room in the restaurant
+        if ((the_queue.size() + eating_queue->size()) < eating_queue->max_size) { // If there is room in the restaurant
             if (!entrance_queue->the_queue.empty()) { // If there are people waiting to be seated
                 Customer *customer = entrance_queue->the_queue.front();
                 entrance_queue->the_queue.pop();
                 entrance_queue->num_served++;
                 entrance_queue->total_wait += clock - customer->getArrivalTime();
-                customer->incrementTotalTime(clock - customer->getArrivalTime());
+                //customer->incrementTotalTime(clock - customer->getArrivalTime());
                 assignDishToCustomer(customer, clock);
-                customer->setTimeInQueue(15 + _random.next_int(10));
+                customer->setTimeInQueue(eating_queue->getFirstDishTime(customer));
                 customer->setArrivalTime(clock);
                 the_queue.push(customer);
                 

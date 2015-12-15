@@ -24,8 +24,16 @@ public:
         max_size = m;
     }
     
+    size_t size() {
+        return the_queue.size();
+    }
+    
     void addDishPair(Customer *customer, SelectionData *data) {
         dishes.insert(std::pair<Customer *, SelectionData *>(customer, data));
+    }
+    
+    int getFirstDishTime(Customer *customer) {
+        return dishes[customer]->getAppetizer()->timeToEat();
     }
     
     void add(Customer *customer) {

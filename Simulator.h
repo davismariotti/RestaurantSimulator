@@ -82,7 +82,7 @@ public:
         std::cout << "Average Wait for first meal: " << table_queue->getTotalWait() / table_queue->getNumServed() << " minutes" << std::endl;
         
         std::cout << "How many people completed all meals: " << eating_queue->getNumServed() << " people" << std::endl;
-        std::cout << "Average Wait for each meal: " << eating_queue->getTotalWait() / eating_queue->getNumServed() << " minutes" << std::endl;
+        std::cout << "Average Wait for each meal: " << eating_queue->getTotalWait() / 3 / eating_queue->getNumServed() << " minutes" << std::endl;
         std::cout << "Average time for customer to leave restaurant: " << eating_queue->getCustomerTotalWait() / eating_queue->getNumServed() << " minutes" << std::endl;
         
     }
